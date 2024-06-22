@@ -1,6 +1,4 @@
 .card {
-    width: 300px;
-    height: 400px;
     perspective: 1000px;
     cursor: pointer;
     margin: 20px; /* Add margin around each card */
@@ -42,5 +40,9 @@
   .message {
     padding: 20px;
     font-family: 'Pacifico', cursive;
+  }
+  /* Red text class */
+.red-text {
+    color: red;
   }
   

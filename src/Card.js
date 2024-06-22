@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import './Card.css';
 
 const Card = ({ image, text }) => {
   const [flipped, setFlipped] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: 300, height: 400 });
+  const imgRef = useRef(null);
 
   const { transform, opacity } = useSpring({
     opacity: flipped ? 1 : 0,
@@ -15,13 +17,36 @@ const Card = ({ image, text }) => {
     setFlipped(!flipped);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (imgRef.current) {
+        const { naturalWidth, naturalHeight } = imgRef.current;
+        const aspectRatio = naturalWidth / naturalHeight;
+        const height = 400; // Default height
+        const width = height * aspectRatio;
+        setDimensions({ width, height });
+      }
+    };
+    handleResize(); // Initial size
+    window.addEventListener('resize', handleResize); // Resize on window resize
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="card" onClick={handleClick}>
+    <div className="card" onClick={handleClick} style={{ width: dimensions.width, height: dimensions.height }}>
       <animated.div
         className="c front"
         style={{ opacity: opacity.interpolate(o => 1 - o), transform }}
       >
-        <img src={image} alt="card front" />
+        <img ref={imgRef} src={image} alt="card front" onLoad={() => {
+          if (imgRef.current) {
+            const { naturalWidth, naturalHeight } = imgRef.current;
+            const aspectRatio = naturalWidth / naturalHeight;
+            const height = 400; // Default height
+            const width = height * aspectRatio;
+            setDimensions({ width, height });
+          }
+        }} />
       </animated.div>
       <animated.div
         className="c back"
@@ -30,7 +55,7 @@ const Card = ({ image, text }) => {
           transform: transform.interpolate(t => `${t} rotateY(180deg)`)
         }}
       >
-        <div className="message">{text}</div>
+        <div className="message" dangerouslySetInnerHTML={{ __html: text }}></div>
       </animated.div>
     </div>
   );
