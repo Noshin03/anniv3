@@ -31,9 +31,8 @@ body {
 
 .pages {
   display: flex;
-  justify-content: center; /* Center pages horizontally */
-  align-items: center; /* Center pages vertically */
-  width: 100%;
+  overflow: hidden;
+  width: 600px;
   height: 100%; /* Adjust to take full height of the container */
   perspective: 1500px;
   position: relative;
@@ -41,31 +40,10 @@ body {
   box-sizing: border-box; /* Ensure padding is included in the width and height */
 }
 
-.card-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
 .card-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 90%; /* Ensure the card container does not exceed the viewport */
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .card-container {
-    max-width: 80vw; /* Reduce the width on smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .card-container {
-    max-width: 90vw; /* Further reduce the width on very small screens */
-  }
 }
 
 .card-title {
