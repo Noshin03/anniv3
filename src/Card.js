@@ -4,7 +4,7 @@ import './Card.css';
 
 const Card = ({ image, text }) => {
   const [flipped, setFlipped] = useState(false);
-  const [dimensions, setDimensions] = useState({ width: 300, height: 400 });
+  const [dimensions, setDimensions] = useState({ width: '80%', height: 'auto' });
   const imgRef = useRef(null);
 
   const { transform, opacity } = useSpring({
@@ -22,9 +22,9 @@ const Card = ({ image, text }) => {
       if (imgRef.current) {
         const { naturalWidth, naturalHeight } = imgRef.current;
         const aspectRatio = naturalWidth / naturalHeight;
-        const height = 400; // Default height
+        const height = Math.min(window.innerHeight * 0.6, 400); // Adjust height based on viewport
         const width = height * aspectRatio;
-        setDimensions({ width, height });
+        setDimensions({ width: `${width}px`, height: `${height}px` });
       }
     };
     handleResize(); // Initial size
@@ -42,9 +42,9 @@ const Card = ({ image, text }) => {
           if (imgRef.current) {
             const { naturalWidth, naturalHeight } = imgRef.current;
             const aspectRatio = naturalWidth / naturalHeight;
-            const height = 400; // Default height
+            const height = Math.min(window.innerHeight * 0.6, 400); // Adjust height based on viewport
             const width = height * aspectRatio;
-            setDimensions({ width, height });
+            setDimensions({ width: `${width}px`, height: `${height}px` });
           }
         }} />
       </animated.div>

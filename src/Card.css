@@ -1,48 +1,91 @@
 .card {
-    perspective: 1000px;
-    cursor: pointer;
-    margin: 20px; /* Add margin around each card */
-  }
-  
-  .c {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 10px; /* Add padding inside each card */
-    box-sizing: border-box; /* Include padding in size calculations */
-  }
-  
-  .front img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image scales to cover the card without distortion */
-  }
-  
-  .back {
-    background: #fff;
-    transform: rotateY(180deg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    font-size: 18px;
-    color: #333;
-  }
-  
-  .message {
-    padding: 20px;
-    font-family: 'Pacifico', cursive;
-  }
-  /* Red text class */
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 20px; /* Add margin around each card */
+}
+
+.c {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px; /* Add padding inside each card */
+  box-sizing: border-box; /* Include padding in size calculations */
+}
+
+.front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image scales to cover the card without distortion */
+}
+
+.back {
+  background: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+}
+
+.message {
+  padding: 20px;
+  font-family: 'Pacifico', cursive;
+}
+
+/* Red text class */
 .red-text {
-    color: red;
+  color: red;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+    max-width: 90%;
+    height: auto;
   }
-  
+
+  .c {
+    padding: 10px;
+  }
+
+  .back {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .message {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    margin: 10px;
+    height: auto;
+  }
+
+  .c {
+    padding: 10px;
+  }
+
+  .back {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .message {
+    padding: 10px;
+  }
+}
