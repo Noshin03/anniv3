@@ -1,7 +1,8 @@
 .card {
   perspective: 1000px;
   cursor: pointer;
-  margin: 20px; /* Add margin around each card */
+  margin: 20px auto; /* Center the card and add margin */
+  max-width: calc(100% - 20px); /* Add some space on the sides */
 }
 
 .c {
@@ -23,6 +24,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensure the image scales to cover the card without distortion */
+  padding: 10px; /* Add padding inside the card */
+  box-sizing: border-box; /* Include padding in size calculations */
 }
 
 .back {
@@ -48,13 +51,12 @@
 }
 
 /* Media queries for responsive design */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .card {
-    width: 90%;
-    max-width: 90%;
+    width: calc(90% - 20px); /* Adjusted to be a percentage for better responsiveness with space on sides */
+    margin: 10px auto; /* Center the card within the container */
     height: auto;
   }
-
   .c {
     padding: 10px;
   }
