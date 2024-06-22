@@ -1,5 +1,5 @@
 .card {
-  width: auto; /* Maintain aspect ratio */
+  width: 90%;
   height: auto; /* Maintain aspect ratio */
   position: relative;
   perspective: 1000px;
@@ -30,8 +30,8 @@
 }
 
 .front img {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
   object-fit: contain; /* Ensure the image scales to fit the card without distortion */
 }
 
