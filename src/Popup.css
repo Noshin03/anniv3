@@ -172,6 +172,7 @@ button {
     transition: background-color 0.3s;
     position: relative; /* Ensure button respects z-index */
     z-index: 1; /* Ensure button is above hearts */
+    font-family: 'Pacifico', cursive; /* Add this line to use the same font as the card titles */
 }
 
 button:hover {
@@ -244,3 +245,24 @@ button:hover {
 .balloon2 { left: 40%; animation-delay: 2s; }
 .balloon3 { left: 60%; animation-delay: 4s; }
 .balloon4 { left: 80%; animation-delay: 6s; }
+
+.kissing-emoji-animation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10vw;
+  animation: growAndDisappear 2s forwards;
+  z-index: 9999; /* Ensure the emoji is above all other elements */
+}
+
+@keyframes growAndDisappear {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(10);
+    opacity: 0;
+  }
+}

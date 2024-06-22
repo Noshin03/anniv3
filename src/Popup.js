@@ -8,6 +8,8 @@ Modal.setAppElement('#root');
 
 const Popup = ({ isOpen, onRequestClose }) => {
   const [showSlideshow, setShowSlideshow] = useState(false);
+  const [showKissingEmoji, setShowKissingEmoji] = useState(false);
+  
   const animation = useSpring({
     opacity: isOpen ? 1 : 0,
     transform: isOpen ? 'scale(1)' : 'scale(0.5)',
@@ -16,8 +18,12 @@ const Popup = ({ isOpen, onRequestClose }) => {
   });
 
   const handleButtonClick = () => {
-    onRequestClose();
-    setShowSlideshow(true);
+    setShowKissingEmoji(true);
+    setTimeout(() => {
+      setShowKissingEmoji(false);
+      onRequestClose();
+      setShowSlideshow(true);
+    }, 2000); // Show emoji animation for 2 seconds before closing popup
   };
 
   return (
@@ -56,6 +62,9 @@ const Popup = ({ isOpen, onRequestClose }) => {
         </animated.div>
       </Modal>
       {showSlideshow && <Slideshow />}
+      {showKissingEmoji && (
+        <div className="kissing-emoji-animation">😘</div>
+      )}
     </>
   );
 };
