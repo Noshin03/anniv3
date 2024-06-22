@@ -69,15 +69,17 @@ const Slideshow = () => {
         <div className="pages">
           {photos.map((photo, i) => (
             <animated.div key={i} className={`storybook-page ${i === index ? 'active' : ''}`}>
-              <div className="card-container">
-                <h2 className="card-title">{photo.title}</h2>
-                <Card
-                  image={photo.image}
-                  text={photo.text}
-                />
-                {i === photos.length - 1 && (
-                  <button className="kissing-button" onClick={handleKissingEmojiClick}>😘</button>
-                )}
+              <div className="card-wrapper">
+                <div className="card-container">
+                  <h2 className="card-title">{photo.title}</h2>
+                  <Card
+                    image={photo.image}
+                    text={photo.text}
+                  />
+                  {i === photos.length - 1 && (
+                    <button className="kissing-button" onClick={handleKissingEmojiClick}>😘</button>
+                  )}
+                </div>
               </div>
             </animated.div>
           ))}
