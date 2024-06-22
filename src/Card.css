@@ -1,11 +1,24 @@
+.card-container {
+  width: 90vw; /* Use viewport width units for responsiveness */
+  height: auto; /* Let the height adjust based on content */
+  max-width: 400px; /* Set maximum width */
+  margin: 20px auto; /* Center the card and add margin around each card */
+  display: flex; /* Centering the card */
+  justify-content: center; /* Centering the card */
+  align-items: center; /* Centering the card */
+  box-sizing: border-box; /* Include padding in size calculations */
+  position: relative;
+}
+
 .card {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  position: relative;
   perspective: 1000px;
   cursor: pointer;
-  margin: 20px; /* Add margin around each card */
 }
 
 .c {
-  position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
@@ -17,15 +30,18 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px; /* Add padding inside each card */
   box-sizing: border-box; /* Include padding in size calculations */
+  position: absolute;
 }
 
 .front img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the image scales to cover the card without distortion */
+  height: auto;
+  object-fit: contain; /* Ensure the image scales to fit the card without distortion */
 }
 
 .back {
+  width: 100%;
+  height: 100%;
   background: #fff;
   transform: rotateY(180deg);
   display: flex;
@@ -49,9 +65,13 @@
 
 /* Media queries for responsive design */
 @media (max-width: 768px) {
+  .card-container {
+    width: 100%;
+    max-width: none;
+  }
+
   .card {
-    width: 90%;
-    max-width: 90%;
+    width: 100%;
     height: auto;
   }
 
@@ -70,9 +90,14 @@
 }
 
 @media (max-width: 480px) {
+  .card-container {
+    width: 100%;
+    margin: 10px auto;
+    max-width: none;
+  }
+
   .card {
     width: 100%;
-    margin: 10px;
     height: auto;
   }
 
