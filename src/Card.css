@@ -1,13 +1,9 @@
-.card-container {
-  width: 90vw; /* Use viewport width units for responsiveness */
-  height: auto; /* Let the height adjust based on content */
-  max-width: 400px; /* Set maximum width */
-  margin: 20px auto; /* Center the card and add margin around each card */
-  display: flex; /* Centering the card */
-  justify-content: center; /* Centering the card */
-  align-items: center; /* Centering the card */
-  box-sizing: border-box; /* Include padding in size calculations */
+.card {
+  width: auto; /* Maintain aspect ratio */
+  height: auto; /* Maintain aspect ratio */
   position: relative;
+  perspective: 1000px;
+  cursor: pointer;
 }
 
 .card {
@@ -34,8 +30,8 @@
 }
 
 .front img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   object-fit: contain; /* Ensure the image scales to fit the card without distortion */
 }
 
