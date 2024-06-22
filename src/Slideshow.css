@@ -107,7 +107,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0 20px; /* Add padding to the sides */
-  box-sizing: border-box;
 }
 
 .nav-button {
@@ -119,6 +118,26 @@ body {
   z-index: 3; /* Ensure the buttons are above the fairy lights */
 }
 
+.start-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px;
+  font-size: 20px;
+  background-color: #ff9a9e;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+  font-family: 'Pacifico', cursive; /* Add this line to use the same font as the card titles */
+}
+
+.start-button:hover {
+  background-color: #ff7a7e;
+}
 .nav-button.left {
   position: absolute;
   left: 10px;

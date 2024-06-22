@@ -35,6 +35,7 @@ const photos = [
 const Slideshow = () => {
   const [index, setIndex] = useState(0);
   const [showKissingEmoji, setShowKissingEmoji] = useState(false);
+  const [started, setStarted] = useState(false);
   const audioRef = useRef(null);
 
   const handleNext = () => {
@@ -56,54 +57,69 @@ const Slideshow = () => {
     }, 2000); // Hide after 2 seconds
   };
 
+  const handleStart = () => {
+    setStarted(true);
+  };
+
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.play();
+    if (started && audioRef.current) {
+      audioRef.current.play().catch(error => {
+        console.error("Audio playback failed:", error);
+      });
     }
-  }, []);
+  }, [started]);
 
   return (
     <div className="outer-container">
-      <div className="fairy-lights-bg">
-        {[...Array(20)].map((_, i) => (
-          <div key={i} className="fairy-light"></div>
-        ))}
-      </div>
-      <div className="storybook-container">
-        {index > 0 && (
-          <button className="nav-button left" onClick={handlePrev}>❮</button>
-        )}
-        <div className="pages">
-          {photos.map((photo, i) => (
-            <animated.div key={i} className={`storybook-page ${i === index ? 'active' : ''}`}>
-              <div className="card-wrapper">
-                <div className="card-container">
-                  <h2 className="card-title">{photo.title}</h2>
-                  <Card
-                    image={photo.image}
-                    text={photo.text}
-                  />
-                  {i === photos.length - 1 && (
-                    <button className="kissing-button" onClick={handleKissingEmojiClick}>😘</button>
-                  )}
-                </div>
-              </div>
-            </animated.div>
-          ))}
-        </div>
-        {index < photos.length - 1 && (
-          <button className="nav-button right" onClick={handleNext}>❯</button>
-        )}
-        <div className="fairy-lights">
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="inner-fairy-light"></div>
-          ))}
-        </div>
-      </div>
-      {showKissingEmoji && (
-        <div className="kissing-emoji-animation">😘</div>
+      {!started && (
+        <button className="start-button" onClick={handleStart}>
+          Baby and Me...Click to see!
+        </button>
       )}
-      <audio ref={audioRef} src={process.env.PUBLIC_URL + '/bgmusic.mp3'} loop />
+      {started && (
+        <>
+          <div className="fairy-lights-bg">
+            {[...Array(20)].map((_, i) => (
+              <div key={i} className="fairy-light"></div>
+            ))}
+          </div>
+          <div className="storybook-container">
+            {index > 0 && (
+              <button className="nav-button left" onClick={handlePrev}>❮</button>
+            )}
+            <div className="pages">
+              {photos.map((photo, i) => (
+                <animated.div key={i} className={`storybook-page ${i === index ? 'active' : ''}`}>
+                  <div className="card-wrapper">
+                    <div className="card-container">
+                      <h2 className="card-title">{photo.title}</h2>
+                      <Card
+                        image={photo.image}
+                        text={photo.text}
+                      />
+                      {i === photos.length - 1 && (
+                        <button className="kissing-button" onClick={handleKissingEmojiClick}>😘</button>
+                      )}
+                    </div>
+                  </div>
+                </animated.div>
+              ))}
+            </div>
+            {index < photos.length - 1 && (
+              <button className="nav-button right" onClick={handleNext}>❯</button>
+            )}
+            <div className="fairy-lights">
+              {[...Array(10)].map((_, i) => (
+                <div key={i} className="inner-fairy-light"></div>
+              ))}
+            </div>
+          </div>
+          {showKissingEmoji && (
+            <div className="kissing-emoji-animation">😘</div>
+          )}
+          <audio ref={audioRef} src={process.env.PUBLIC_URL + '/bgmusic.mp3'} loop />
+        </>
+      )}
     </div>
   );
 };
