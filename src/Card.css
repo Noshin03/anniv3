@@ -1,20 +1,11 @@
 .card {
-  width: 90%;
-  height: auto; /* Maintain aspect ratio */
-  position: relative;
   perspective: 1000px;
   cursor: pointer;
-}
-
-.card {
-  width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  position: relative;
-  perspective: 1000px;
-  cursor: pointer;
+  margin: 20px; /* Add margin around each card */
 }
 
 .c {
+  position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
@@ -26,18 +17,15 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px; /* Add padding inside each card */
   box-sizing: border-box; /* Include padding in size calculations */
-  position: absolute;
 }
 
 .front img {
   width: 100%;
-  height: auto;
-  object-fit: contain; /* Ensure the image scales to fit the card without distortion */
+  height: 100%;
+  object-fit: cover; /* Ensure the image scales to cover the card without distortion */
 }
 
 .back {
-  width: 100%;
-  height: 100%;
   background: #fff;
   transform: rotateY(180deg);
   display: flex;
@@ -61,13 +49,9 @@
 
 /* Media queries for responsive design */
 @media (max-width: 768px) {
-  .card-container {
-    width: 100%;
-    max-width: none;
-  }
-
   .card {
-    width: 100%;
+    width: 90%;
+    max-width: 90%;
     height: auto;
   }
 
@@ -86,14 +70,9 @@
 }
 
 @media (max-width: 480px) {
-  .card-container {
-    width: 100%;
-    margin: 10px auto;
-    max-width: none;
-  }
-
   .card {
     width: 100%;
+    margin: 10px;
     height: auto;
   }
 
