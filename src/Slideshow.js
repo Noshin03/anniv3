@@ -15,7 +15,7 @@ const photos = [
     title: 'When we met...'
   },
   {
-    image: process.env.PUBLIC_URL + '/photo3.jpg',
+    image: process.env.PUBLIC_URL + '/photo3.JPG',
     text: 'You were there for me every step of the way. You have been my protector, my mentor, my cheerleader, my best friend, my lover and everything I could ever dream of from a life partner. <span class="red-text">You are my home, baby. You are my safe place.</span>',
     title: 'We grew together...'
   },
