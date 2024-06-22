@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import './Slideshow.css';
 import Card from './Card';
@@ -35,6 +35,7 @@ const photos = [
 const Slideshow = () => {
   const [index, setIndex] = useState(0);
   const [showKissingEmoji, setShowKissingEmoji] = useState(false);
+  const audioRef = useRef(null);
 
   const handleNext = () => {
     if (index < photos.length - 1) {
@@ -54,6 +55,12 @@ const Slideshow = () => {
       setShowKissingEmoji(false);
     }, 2000); // Hide after 2 seconds
   };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  }, []);
 
   return (
     <div className="outer-container">
@@ -96,6 +103,7 @@ const Slideshow = () => {
       {showKissingEmoji && (
         <div className="kissing-emoji-animation">😘</div>
       )}
+      <audio ref={audioRef} src={process.env.PUBLIC_URL + '/bgmusic.mp3'} loop />
     </div>
   );
 };

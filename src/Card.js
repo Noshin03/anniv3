@@ -43,7 +43,7 @@ const Card = ({ image, text }) => {
             const { naturalWidth, naturalHeight } = imgRef.current;
             const aspectRatio = naturalWidth / naturalHeight;
             const height = Math.min(window.innerHeight * 0.6, 400); // Adjust height based on viewport
-            const width = height * aspectRatio;
+            const width = window.innerWidth <= 480 ? window.innerWidth * 0.9 : height * aspectRatio; // Adjust width for mobile
             setDimensions({ width: `${width}px`, height: `${height}px` });
           }
         }} />
