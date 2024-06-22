@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.overlay {
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden; /* Ensure fireworks stay within the bounds */
+}
+
+.firework {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    animation: firework 1s ease-out infinite;
+    opacity: 0;
+}
+
+@keyframes firework {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(3) translateY(-100px);
+    }
+}
+
+/* Position and delay each firework */
+.firework1 { top: 50%; left: 50%; animation-delay: 0s; }
+.firework2 { top: 40%; left: 60%; animation-delay: 0.2s; }
+.firework3 { top: 60%; left: 40%; animation-delay: 0.4s; }
+.firework4 { top: 30%; left: 70%; animation-delay: 0.6s; }
+.firework5 { top: 70%; left: 30%; animation-delay: 0.8s; }
+.firework6 { top: 20%; left: 80%; animation-delay: 1s; }
+.firework7 { top: 80%; left: 20%; animation-delay: 1.2s; }
+.firework8 { top: 50%; left: 20%; animation-delay: 1.4s; }
+.firework9 { top: 50%; left: 80%; animation-delay: 1.6s; }
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    padding: 20px 10px 10px 10px; /* Explicitly set padding for all sides */
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    overflow: visible;
+    border: none; /* Remove default border */
+    border-radius: 15px; /* Ensure no border radius */
+    box-sizing: border-box; /* Include padding in size calculations */
+    box-shadow: none; /* Remove any box shadow */
+    outline: none; /* Remove focus outline */
+    background: inherit; /* Inherit the background from the modal */
+}
+
+.popup-content {
+    border-radius: 15px; 
+    position: relative;
+    z-index: 1; /* Ensure content is above heart container */
+}
+
+.heart-container {
+    position: absolute;
+    top: 0; /* Adjust as needed */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 2; /* Ensure hearts are above content */
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    margin: 0 auto;
+    transform: rotate(-45deg);
+    animation: float 5s infinite;
+    opacity: 0.25;
+}
+
+.heart:before,
+.heart:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -10px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: 10px;
+}
+
+.heart1 {
+    left: 45%;
+    top: 40%; /* Adjust heart positions */
+    animation-delay: 0s;
+}
+
+.heart2 {
+    left: 60%;
+    top: 50%; /* Adjust heart positions */
+    animation-delay: 0.5s;
+}
+
+.heart3 {
+    left: 35%;
+    top: 60%; /* Adjust heart positions */
+    animation-delay: 1s;
+}
+
+.heart4 {
+    left: 55%;
+    top: 70%; /* Adjust heart positions */
+    animation-delay: 1.5s;
+}
+
+.heart5 {
+    left: 25%;
+    top: 45%; /* Adjust heart positions */
+    animation-delay: 2s;
+}
+
+.heart6 {
+    left: 75%;
+    top: 55%; /* Adjust heart positions */
+    animation-delay: 2.5s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1) rotate(-45deg);
+        opacity: 0.25;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2) rotate(-45deg);
+        opacity: 0.75;
+    }
+    100% {
+        transform: translateY(0) scale(1) rotate(-45deg);
+        opacity: 0.25;
+    }
+}
+
+button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px; /* Increase font size for emoji */
+    transition: background-color 0.3s;
+    position: relative; /* Ensure button respects z-index */
+    z-index: 1; /* Ensure button is above hearts */
+}
+
+button:hover {
+    background-color: #ff4f41;
+}
+
+.anniversary-text {
+    font-family: 'Pacifico', cursive;
+    color: red;
+    font-size: 2em;
+    margin-top: -10px; /* Adjust margin top to move message higher */
+}
+
+/* New styles for floating balloons with emojis and short curly tails */
+.balloon {
+    position: absolute;
+    bottom: -100px; /* Start below the viewport */
+    width: 50px;
+    height: 70px;
+    background-color: rgba(255, 0, 0, 0.8); /* Red color with transparency */
+    border-radius: 50%;
+    animation: floatUp 6s ease-in infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; /* Adjust emoji size */
+}
+
+.balloon::before {
+    content: '😘'; /* Kissing emoji */
+    position: absolute;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Position just below the balloon */
+    left: 50%;
+    width: 2px;
+    height: 20px; /* Adjust the height of the tail */
+    background-color: rgba(255, 0, 0, 0.8);
+    transform: translateX(-50%) rotate(45deg);
+    border-top-left-radius: 50%; /* Make the tail curly */
+    border-bottom-right-radius: 50%; /* Make the tail curly */
+    animation: curlyTail 2s infinite alternate;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-150vh); /* Float upwards out of viewport */
+        opacity: 0;
+    }
+}
+
+@keyframes curlyTail {
+    0% {
+        transform: translateX(-50%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(-50%) rotate(-45deg);
+    }
+}
+
+/* Position and delay each balloon */
+.balloon1 { left: 20%; animation-delay: 0s; }
+.balloon2 { left: 40%; animation-delay: 2s; }
+.balloon3 { left: 60%; animation-delay: 4s; }
+.balloon4 { left: 80%; animation-delay: 6s; }
